@@ -60,4 +60,76 @@ class perfect extends sequence
       x0=x;
       y0=y; 
     }
+    
+    void draw_bars(int n)
+  {
+    background(0);
+    int divisor = n - 14;
+    int alto;
+    int ancho = width/4;
+    int numBarra = 0;
+    int base = height - 20;
+    int numero = 1;
+    int posicion = 0;
+    boolean siguiente = false;
+    while(numBarra < 4)
+    {
+      while(!siguiente)
+      {
+        numero++;
+        if(evaluate(numero))
+          siguiente = true;
+      }
+      fill(r,g,b);
+      //stroke(map(posicion,width,0,n,255-n),150,map(posicion,width,0,255-n,n));
+      if(numero / divisor < 1)
+        alto=1;
+      else
+        alto = numero / divisor;
+      rect(posicion, base - alto, ancho, alto);
+      textSize(10);
+      text(numero, posicion, base + 15);
+      posicion += ancho;
+      numBarra++;
+      siguiente=false;
+    }
   }
+  
+  void draw_curve(int n)
+  {
+    background(0);
+    noFill();
+    beginShape();
+    int divisor = n - 14;
+    int alto;
+    int ancho = width/4;
+    int numBarra = 0;
+    int base = height - 20;
+    int numero = 1;
+    int posicion = 0;
+    boolean siguiente = false;
+    while(numBarra < 4)
+    {
+      while(!siguiente)
+      {
+        numero++;
+        if(evaluate(numero))
+          siguiente = true;
+      }
+      if(numero / divisor < 1)
+        alto=1;
+      else
+        alto = numero / divisor;
+      curveVertex(posicion, base - alto);
+      textSize(10);
+      text(numero, posicion, base + 15);
+      posicion += ancho;
+      numBarra++;
+      siguiente=false;
+    }
+    curveVertex(width, height);
+
+    endShape();
+    
+  }
+}
