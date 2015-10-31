@@ -108,14 +108,73 @@ class fibonacci extends sequence
     }
   }
   
-  void draw_bars(int n)
+  void draw_bars(int m)
   {
-    
+    if(m<44)
+      n=m-14;
+    else
+      n=30;
+    background(0);
+    int divisor = 1;
+    int alto;
+    int ancho = width/n;
+    int numBarra = 0;
+    int base = height - 20;
+    int numero = 1;
+    int fibo;
+    int posicion = 0;
+    while(numBarra < n)
+    {
+      fibo = compute(numero);
+      fill(map(posicion,width,0,n,255-n));
+      //stroke(map(posicion,width,0,n,255-n),150,map(posicion,width,0,255-n,n));
+      if(fibo / divisor < 1)
+        alto=1;
+      else
+        alto = fibo / divisor;
+      rect(posicion, base - alto, ancho, alto);
+      textSize(10);
+      text(fibo, posicion, base + 15);
+      posicion += ancho;
+      numBarra++;
+      numero++;
+    }
   }
   
-  void draw_curve(int n)
+  void draw_curve(int m)
   {
-    
+    if(m<44)
+      n=m-14;
+    else
+      n=30;
+    background(0);
+    noFill();
+    beginShape();
+    int divisor = 1;
+    int alto;
+    int ancho = width/n;
+    int numBarra = 0;
+    int base = height - 20;
+    int numero = 1;
+    int fibo;
+    int posicion = 0;
+    while(numBarra < n)
+    {
+      fibo = compute(numero);
+      if(fibo / divisor < 1)
+        alto=1;
+      else
+        alto = fibo / divisor;
+      curveVertex(posicion, base - alto);
+      textSize(10);
+      text(fibo, posicion, base + 15);
+      posicion += ancho;
+      numBarra++;
+      numero++;
+    }
+    curveVertex(posicion, base - numero);
+
+    endShape();
   }
   
 }

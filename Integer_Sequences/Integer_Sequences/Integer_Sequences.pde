@@ -16,10 +16,10 @@ void draw()
       seq.draw_principal(n);
       break;
     case 2:
-      seq.draw_bars(n);
+      seq.draw_curve(n);
       break;
     case 3:
-      seq.draw_curve(n);
+      seq.draw_bars(n);
       break;
   }
   seq.outN(seq.n);
@@ -43,7 +43,7 @@ void keyPressed()
   }
   if(key=='+')
   {
-    if(n<1000)
+    if(n<500)
       n++;
   }
   if(key=='-')
@@ -61,14 +61,14 @@ void keyPressed()
         seq = new fibonacci(n);
       else
         if(classn==4)
-          seq = new primos(n);
+          seq = new prime(n);
   if(keyCode==UP)
-    if(repre<=3)
+    if(repre<3)
       repre++;
     else
       repre = 1;
   if(keyCode==DOWN)
-    if(repre>=1)
+    if(repre>1)
       repre--;
     else
       repre = 3;

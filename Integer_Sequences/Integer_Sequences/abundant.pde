@@ -61,9 +61,10 @@ class abundant extends sequence
       x0=x;
       y0=y; 
     }
-    
-    void draw_bars(int n)
-    {
+  }
+  
+  void draw_bars(int n)
+  {
     background(0);
     int ancho = width/n;
     int numBarra = 0;
@@ -121,4 +122,5 @@ class abundant extends sequence
 
     endShape();
   }
+  
 }

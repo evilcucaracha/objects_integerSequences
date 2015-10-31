@@ -60,8 +60,9 @@ class perfect extends sequence
       x0=x;
       y0=y; 
     }
-    
-    void draw_bars(int n)
+  }
+  
+  void draw_bars(int n)
   {
     background(0);
     int divisor = n - 14;
@@ -132,4 +133,5 @@ class perfect extends sequence
     endShape();
     
   }
+  
 }
