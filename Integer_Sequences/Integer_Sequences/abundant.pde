@@ -61,4 +61,64 @@ class abundant extends sequence
       x0=x;
       y0=y; 
     }
+    
+    void draw_bars(int n)
+    {
+    background(0);
+    int ancho = width/n;
+    int numBarra = 0;
+    int base = height - 20;
+    int numero = 1;
+    int posicion = 0;
+    boolean siguiente = false;
+    while(numBarra < n)
+    {
+      while(!siguiente)
+      {
+        numero++;
+        if(evaluate(numero))
+          siguiente = true;
+      }
+      fill(r,g,b);
+      //stroke(r,g,b);
+      rect(posicion, base - numero, ancho, numero);
+      textSize(10);
+      text(numero, posicion, base + 15);
+      posicion += ancho;
+      numBarra++;
+      siguiente=false;
+    }
   }
+  
+  void draw_curve(int n)
+  {
+    background(0);
+    noFill();
+    beginShape();
+    curveVertex(0, height);
+    int ancho = width/n;
+    int numBarra = 0;
+    int base = height - 20;
+    int numero = 1;
+    int posicion = 0;
+    boolean siguiente = false;
+    while(numBarra < n)
+    {
+      while(!siguiente)
+      {
+        numero++;
+        if(evaluate(numero))
+          siguiente = true;
+      }
+      curveVertex(posicion, base - numero);
+      textSize(10);
+      text(numero, posicion, base + 15);
+      posicion += ancho;
+      numBarra++;
+      siguiente=false;
+    }
+    curveVertex(posicion, base - numero);
+
+    endShape();
+  }
+}
